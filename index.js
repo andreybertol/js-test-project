@@ -5,9 +5,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  const dadoExterno = req.query.dadoExterno;
-  const valorDoResponse = `Você me enviou: ${dadoExterno}`;
-  res.send(valorDoResponse);
+
 });
 
 const port = 3000;
@@ -22,18 +20,22 @@ const rl = readline.createInterface({
 });
 
 filterHotels = (isWeekend) => {
+
+  let arrTotal = [];
   for (var i = 0; i < json.hotels; i++) {
     var hotel = hotels[i];
-    var type = hotels.tipo;
-    var value = 0;
+    var type = hotels.tipo;    
+    var total = 0;
+
     for (var j = 0; j < hotel.dia_de_semana.length; j++) {
       if (type == "Regular") {
-        value = hotel.dia_de_semana[0]; // Valor Regular
+        total += hotel.dia_de_semana[0]; // Valor Regular
       } else {
-        value = hotel.dia_de_semana[1]; // Valor Fidelidade
+        total += hotel.dia_de_semana[1]; // Valor Fidelidade
       }
 
-      console.log("\nTipo: " + tipo + "\nValor: " + valor);
+      console.log("\nTipo: " + tipo + "\nValor: " + valor);      
+      arrTotal.push(hotel.nome) // TODO finalizar
     }
   }
 };
