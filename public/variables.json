@@ -1,0 +1,40 @@
+{    
+    "hoteis": [
+        {
+            "nome": "Parque das Flores",
+            "classificacao": 3,
+            "dia_de_semana": {
+                "regular": 110,
+                "fidelidade": 80
+            },
+            "fim_de_semana": {
+                "regular": 90,
+                "fidelidade": 80
+            }
+        },
+        {
+            "nome": "Jardim Botânico",
+            "classificacao": 4,
+            "dia_de_semana": {
+                "regular": 160,
+                "fidelidade": 110
+            },
+            "fim_de_semana": {
+                "regular": 60,
+                "fidelidade": 50
+            }
+        },
+        {
+            "nome": "Mar Atlântico",
+            "classificacao": 5,
+            "dia_de_semana": {
+                "regular": 220,
+                "fidelidade": 100
+            },
+            "fim_de_semana": {
+                "regular": 150,
+                "fidelidade": 40
+            }
+        }       
+    ]    
+}
