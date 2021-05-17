@@ -1,30 +1,17 @@
-const hoteis = require("./variables.json");
+const jsonHoteis = require("./variables.json");
 const readline = require("readline");
-const express = require("express");
-
-const app = express();
-
-app.get("/", (req, res) => {
-
-});
-
-const port = 3000;
-
-app.listen(port, () => {
-  console.log(`Servidor up em: htttp://localhost:${port}`);
-});
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-filterHotels = (isWeekend) => {
+filtrarHoteis = (isWeekend) => {
 
   let arrTotal = [];
-  for (var i = 0; i < json.hotels; i++) {
-    var hotel = hotels[i];
-    var type = hotels.tipo;    
+  for (var i = 0; i < jsonHoteis.hoteis; i++) {
+    var hotel = jsonHoteis[i];
+    var tipo = jsonHoteis.tipo;
     var total = 0;
 
     for (var j = 0; j < hotel.dia_de_semana.length; j++) {
@@ -50,7 +37,7 @@ isWeekend = (date) => {
   return false;
 };
 
-fetchCheapestHotel = () => {
+buscarHotelBarato = () => {
   rl.question("Informe a entrada: ", (entrada) => {
     var arrEntrada = entrada.split(/[:,]+/);
     const tipo = arrEntrada[0];
@@ -60,7 +47,7 @@ fetchCheapestHotel = () => {
 
     for (var i = 1; i <= datas; i++) {
       let data = arrEntrada[i];
-      filterHotels(isWeekend(data));
+      filtrarHoteis(isWeekend(data));
     }
     rl.close();
   });
@@ -70,3 +57,6 @@ rl.on("close", () => {
   console.log("\n Saindo da aplicação.");
   process.exit(0);
 });
+
+// inicio
+buscarHotelBarato();
