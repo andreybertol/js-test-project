@@ -3,14 +3,11 @@
   "version": "1",
   "description": "A simple project with a single failing test",
   "scripts": {
-    "test": "mocha test/**/*spec.js",
-    "dev": "nodemon --inspect ./index.js"
+    "test": "mocha test/**/*spec.js"
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "express": "^4.17.1",
-    "mocha": "^4.0.1",
-    "nodemon": "^2.0.7"
+    "mocha": "^4.0.1"
   },
   "main": "index.js",
   "repository": "https://github.com/ThoughtWorksInc/js-test-project.git",
