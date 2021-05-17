@@ -1,4 +1,4 @@
-const jsonHoteis = require("./variables.json");
+const jsonHoteis = require("./hotels.json");
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -6,24 +6,30 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-filtrarHoteis = (isWeekend) => {
+filtrarHoteis = (bWeekend, tipo) => {  
+  let arrTotal = {};
+  arrTotal.hoteis = [];
 
-  let arrTotal = [];
   for (var i = 0; i < jsonHoteis.hoteis; i++) {
     var hotel = jsonHoteis[i];
-    var tipo = jsonHoteis.tipo;
     var total = 0;
+    arrTotal.hoteis[0].nome = hotel;
 
-    for (var j = 0; j < hotel.dia_de_semana.length; j++) {
-      if (type == "Regular") {
-        total += hotel.dia_de_semana[0]; // Valor Regular
+    if (tipo == "Regular") {
+      if (bWeekend) {
+        total += hotel.fim_de_semana[0];
       } else {
-        total += hotel.dia_de_semana[1]; // Valor Fidelidade
+        total += hotel.dia_de_semana[0];
       }
-
-      console.log("\nTipo: " + tipo + "\nValor: " + valor);      
-      arrTotal.push(hotel.nome) // TODO finalizar
+    } else { // Tipo Fidelidade
+      if (bWeekend) {
+        total += hotel.fim_de_semana[1];
+      } else {
+        total += hotel.dia_de_semana[1];
+      }
     }
+    console.log("\nTipo: " + tipo + "\nValor: " + total);
+    arrTotal.hoteis[0].total = total;
   }
 };
 
@@ -41,13 +47,11 @@ buscarHotelBarato = () => {
   rl.question("Informe a entrada: ", (entrada) => {
     var arrEntrada = entrada.split(/[:,]+/);
     const tipo = arrEntrada[0];
-    const datas = arrEntrada.length - 1;
+    const qtdDatas = arrEntrada.length - 1;    
 
-    console.log("\nTipo: " + tipo);
-
-    for (var i = 1; i <= datas; i++) {
+    for (var i = 1; i <= qtdDatas; i++) {
       let data = arrEntrada[i];
-      filtrarHoteis(isWeekend(data));
+      filtrarHoteis(isWeekend(data), tipo);
     }
     rl.close();
   });
